@@ -7,4 +7,9 @@ body {
 	background: rgb(10,4,120);
 	background: linear-gradient(145deg, rgba(10,4,120,1) 0%,rgba(9,9,121,1) 35%, rgba(166,0,255,1) 100%);
 	font-family: 'Balsamiq Sans', cursive;
+	color: #D5D8DC;
+}
+
+h1 {
+	font-size: 3.5rem;
 }
