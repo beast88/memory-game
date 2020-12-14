@@ -1,10 +1,12 @@
 import React, {useState} from 'react'
+import Header from './Components/Header'
 
-function App() {
-  return (
+const App = () => {
+  return(
     <div className="container">
+      <Header />
     </div>
-  );
+  )
 }
 
 export default App;
