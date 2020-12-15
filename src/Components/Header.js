@@ -2,10 +2,9 @@ import React from 'react'
 
 const Header = () => {
 	return(
-		<header>
-			//Link to github here
+		<header className="header">
+			<a href="https://github.com/beast88/memory-game" target="_blank"><i className="fa fa-github"></i></a>
 			<h1>Test Your Memory</h1>
-			//Link to about section?
 		</header>
 	)
 }
