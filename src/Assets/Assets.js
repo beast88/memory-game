@@ -135,7 +135,7 @@ const Assets = [
 		id: 17,
 		image: Kong,
 		name: 'Donkey Kong',
-		info: 'Barrel throwing ape'
+		info: 'Barrel Throwing Ape'
 	},
 	{
 		id: 18,
@@ -165,7 +165,7 @@ const Assets = [
 		id: 22,
 		image: Mario,
 		name: 'Mario',
-		info: 'Mushroom eating Plumber'
+		info: 'Mushroom Eating Plumber'
 	},
 	{
 		id: 23,
@@ -213,13 +213,13 @@ const Assets = [
 		id: 30,
 		image: Soundwave,
 		name: 'Soundwave',
-		info: 'Decepticon Communications Officer'
+		info: 'Decepticon Comms Officer'
 	},
 	{
 		id: 31,
 		image: Spiderman,
 		name: 'Spider-man',
-		info: 'Friendly Neighbourhood Webslinger'
+		info: 'Webslinger'
 	},
 	{
 		id: 32,

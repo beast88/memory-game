@@ -1,5 +1,6 @@
 * {
 	box-sizing: border-box;
+	overflow-y: hidden;
 }
 
 body {
@@ -19,6 +20,14 @@ h3 {
 	font-size: 2rem;
 }
 
+h5 {
+	font-weight: 700;
+}
+
+h6 {
+	font-size: 0.9rem;
+}
+
 a {
 	color: #D5D8DC;
 }
@@ -30,7 +39,7 @@ a {
 .header {
 	text-align: center;
 	position: relative;
-	padding-bottom: 20px;
+	padding-bottom: 10px;
 }
 
 .header a {
@@ -45,7 +54,6 @@ a .fa {
 .about-container {
 	background: rgba(0, 0, 0, 0.4);
 	margin: auto;
-	margin-bottom: 20px;
 	width: 75%;
 	text-align: center;
 	line-height: 1.5rem;
@@ -53,7 +61,7 @@ a .fa {
 }
 
 .about-container p {
-	padding: 30px;
+	padding: 20px;
 	font-size: 1.2rem;
 }
 
@@ -61,7 +69,50 @@ a .fa {
 	width: 75%;
 	padding: 15px;
 	margin: auto;
-	margin-bottom: 20px;
 	display: flex;
 	justify-content: space-between;
+}
+
+.card-container {
+	display: flex;
+	align-items: center;
+	width: 75%;
+	height: 430px;
+	margin: auto;
+	justify-content: space-around;
+}
+
+.character-card {
+	width: 25%;
+	height: 390px;
+	border: 5px solid black;
+	border-radius: 10px;
+	background: #E5E8E8;
+	color: #283747;
+	transition: all 0.2s ease-in-out;
+}
+
+.character-card img {
+	height: 340px;
+	width: 100%;
+	object-fit: cover;
+	border-top-left-radius: 3px;
+	border-top-right-radius: 3px;
+	border-bottom: 2px solid black;
+}
+
+.character-card .character-info {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.character-card:hover {
+	box-shadow: 2px 1px 9px 9px rgba(255,255,255,0.72);
+	-webkit-box-shadow: 2px 1px 9px 9px rgba(255,255,255,0.72);
+	-moz-box-shadow: 2px 1px 9px 9px rgba(255,255,255,0.72);
+
+	cursor: pointer;
+	transform: scale(1.03);
 }
