@@ -38,11 +38,27 @@ const App = () => {
     return arr
   }
 
+  const checker = (arr, target) => target.every(n => arr.includes(n))
+
   const characterGen = () => {
     let selection = shuffle(Assets).slice(0, 3)
-    return selection
 
-    //Need to make sure the selection includes at least one card that hasn't been selected by the player already
+    let cards = selection.map(card => {
+      return card.id
+    })
+
+    if(guess.length >= 3) {
+      
+      if(checker(cards, guess)) {
+        characterGen()
+      } else {
+        return selection
+      }
+
+    } else {
+      return selection
+    }
+
   }
 
   const cards = characterGen().map(card => {
