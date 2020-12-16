@@ -47,8 +47,8 @@ const App = () => {
       return card.id
     })
 
-    if(guess.length >= 3) {
-      
+    if(guess.length >= 3 && < 35) {
+
       if(checker(cards, guess)) {
         characterGen()
       } else {
