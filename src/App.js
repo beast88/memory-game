@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState} from 'react'
 import Header from './Components/Header'
 import Assets from './Assets/Assets'
 import About from './Components/About'
@@ -9,13 +9,19 @@ const App = () => {
   const [bestScore, setBestScore] = useState(0)
   const [guess, setGuess] = useState([])
 
-  const scoreUpdate = () => {
-    setScore(score + 1)
+  const handleClick = (id) => {
+    if(guess.includes(id) === false) {
+      setScore(score + 1)
+      setGuess(prevGuess => [...prevGuess, id])
+    } else {
+      resetGame()
+    }
   }
 
   const resetGame = () => {
     setBestScore(score)
     setScore(0)
+    setGuess([])
   }
 
   const shuffle = (arr) => {
@@ -40,7 +46,11 @@ const App = () => {
   }
 
   const cards = characterGen().map(card => {
-    return <Character data={card} />
+    return <Character 
+              data={card}
+              handleClick={handleClick}
+              key={card.id} 
+            />
   })
 
   return(
