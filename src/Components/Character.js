@@ -7,6 +7,7 @@ const Character = (props) => {
 
 			<div className="character-info">
 				<h5>{props.data.name}</h5>
+				{props.data.id}
 				<h6>{props.data.info}</h6>
 			</div>
 		</div>

@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import Header from './Components/Header'
 import Assets from './Assets/Assets'
 import About from './Components/About'
@@ -8,6 +8,7 @@ const App = () => {
   const [score, setScore] = useState(0)
   const [bestScore, setBestScore] = useState(0)
   const [guess, setGuess] = useState([])
+  const [spread, setSpread] = useState([])
 
   const handleClick = (id) => {
     if(guess.includes(id) === false) {
@@ -19,7 +20,9 @@ const App = () => {
   }
 
   const resetGame = () => {
-    setBestScore(score)
+    if(score > bestScore){
+      setBestScore(score)
+    }
     setScore(0)
     setGuess([])
   }
@@ -38,30 +41,33 @@ const App = () => {
     return arr
   }
 
-  const checker = (arr, target) => target.every(n => arr.includes(n))
+  //const checker = (arr, target) => target.every(n => arr.includes(n))
 
-  const characterGen = () => {
+  // const cardCheck = (selection, picks) => {
+  //   if (guess.length >= 3 && guess.length < 35) {
+  //     if(checker(picks, guess) === true) {
+  //       console.log('true')
+  //     } else {
+  //       console.log('false')
+  //       return selection
+  //     }
+  //   } else {
+  //     return selection
+  //   }
+  // }
+
+  const getSpread = () => {
     let selection = shuffle(Assets).slice(0, 3)
 
-    let cards = selection.map(card => {
-      return card.id
-    })
-
-    if(guess.length >= 3 && < 35) {
-
-      if(checker(cards, guess)) {
-        characterGen()
-      } else {
-        return selection
-      }
-
-    } else {
-      return selection
-    }
-
+    setSpread(selection)
+    console.log(guess)
   }
 
-  const cards = characterGen().map(card => {
+  useEffect(() => {
+    getSpread()
+  }, [score])
+
+  const cards = spread.map(card => {
     return <Character 
               data={card}
               handleClick={handleClick}
