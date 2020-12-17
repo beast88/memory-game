@@ -1,33 +1,12 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState} from 'react'
 import Header from './Components/Header'
 import Assets from './Assets/Assets'
 import About from './Components/About'
 import Character from './Components/Character'
 
 const App = () => {
-  const [score, setScore] = useState(0)
-  const [bestScore, setBestScore] = useState(0)
-  const [guess, setGuess] = useState([])
-  const [spread, setSpread] = useState([])
 
-  const handleClick = (id) => {
-    if(guess.includes(id) === false) {
-      setScore(score + 1)
-      setGuess(prevGuess => [...prevGuess, id])
-    } else {
-      resetGame()
-    }
-  }
-
-  const resetGame = () => {
-    if(score > bestScore){
-      setBestScore(score)
-    }
-    setScore(0)
-    setGuess([])
-  }
-
-  const shuffle = (arr) => {
+    const shuffle = (arr) => {
     let currentIndex = arr.length, tempValue, randomIndex
 
     while(0 !== currentIndex){
@@ -41,33 +20,71 @@ const App = () => {
     return arr
   }
 
-  //const checker = (arr, target) => target.every(n => arr.includes(n))
+  const [score, setScore] = useState(0)
+  const [bestScore, setBestScore] = useState(0)
+  const [cards, setCards] = useState(Assets)
+  const [spread, setSpread] = useState(shuffle([...cards]).slice(0, 3))
 
-  // const cardCheck = (selection, picks) => {
-  //   if (guess.length >= 3 && guess.length < 35) {
-  //     if(checker(picks, guess) === true) {
-  //       console.log('true')
-  //     } else {
-  //       console.log('false')
-  //       return selection
-  //     }
-  //   } else {
-  //     return selection
-  //   }
-  // }
+  const handleClick = (id) => {
+   const clickedCard = cards.find(card => card.id === id)
 
-  const getSpread = () => {
-    let selection = shuffle(Assets).slice(0, 3)
+   if(clickedCard.isClicked === true){
+    gameOver()
+    resetGame()
+   } else {
+    setScore(score + 1)
 
-    setSpread(selection)
-    console.log(guess)
+    setCards(
+      [...cards.map(card => {
+        if(card.id === id) {
+          card.isClicked = true
+        }
+        return card
+      })]
+    )
+
+    newSpread()
+
+   }
   }
 
-  useEffect(() => {
-    getSpread()
-  }, [score])
+  const resetGame = () => {
+    if(score > bestScore){
+      setBestScore(score)
+    }
+    setScore(0)
 
-  const cards = spread.map(card => {
+    setCards([...cards.map(card => {
+      card.isClicked = false
+      return card
+    })])
+
+    setSpread(shuffle([...cards]).slice(0, 3))
+  }
+
+  const gameOver = () => {
+    const unclickedCards = [...cards.filter(card => card.isClicked === false)]
+
+    if(unclickedCards.length === 0){
+      resetGame()
+    }
+  }
+
+  const newSpread = () => {
+    const unclickedCards = [...cards.filter(card => card.isClicked === false)]
+
+    const validCard = shuffle(unclickedCards).filter(
+      card => !spread.includes(card)
+    )[0]
+
+    const options = [validCard,
+      ...shuffle(cards.filter(card => card.id !== validCard.id && !spread.includes(card))).slice(0, 2)
+    ]
+
+    setSpread(shuffle([...options]))
+  }
+
+  const displayCards = spread.map(card => {
     return <Character 
               data={card}
               handleClick={handleClick}
@@ -86,7 +103,7 @@ const App = () => {
       </div>
 
       <div className="card-container">
-        {cards}
+        {displayCards}
       </div>
 
     </div>
