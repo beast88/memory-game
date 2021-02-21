@@ -129,3 +129,49 @@ a .fa {
 	cursor: pointer;
 	transform: scale(1.03);
 }
+
+@media screen and (max-width: 768px){
+	* {
+		overflow-y: auto;
+	}
+
+	h1 {
+		font-size: 1.5rem;
+	}
+
+	h3 {
+		font-size: 1rem;
+	}
+
+	.container {
+		margin: 10px;
+	}
+
+	a .fa {
+		font-size: 1.5rem;
+	}
+
+	.about-container {
+		width: 100%;
+		line-height: 1rem;
+	}
+
+	.about-container p {
+		font-size: 0.8rem;
+		padding: 11px;
+	}
+
+	.score-card {
+		width: 100%;
+		padding: 8px;
+	}
+
+	.card-container {
+		height: 1250px;
+		flex-direction: column;
+	}
+
+	.character-card {
+		width: 80%;
+	}
+}
