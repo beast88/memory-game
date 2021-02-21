@@ -7,18 +7,18 @@ import Character from './Components/Character'
 const App = () => {
 
     const shuffle = (arr) => {
-    let currentIndex = arr.length, tempValue, randomIndex
+      let currentIndex = arr.length, tempValue, randomIndex
 
-    while(0 !== currentIndex){
-      randomIndex = Math.floor(Math.random() * currentIndex--)
+      while(0 !== currentIndex){
+        randomIndex = Math.floor(Math.random() * currentIndex--)
 
-      tempValue = arr[currentIndex]
-      arr[currentIndex] = arr[randomIndex]
-      arr[randomIndex] = tempValue
+        tempValue = arr[currentIndex]
+        arr[currentIndex] = arr[randomIndex]
+        arr[randomIndex] = tempValue
+      }
+
+      return arr
     }
-
-    return arr
-  }
 
   const [score, setScore] = useState(0)
   const [bestScore, setBestScore] = useState(0)
@@ -44,7 +44,6 @@ const App = () => {
     )
 
     newSpread()
-
    }
   }
 
